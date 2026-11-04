@@ -2,6 +2,21 @@
 
 All versions of VoiceFlow AI. Installers: [Releases](https://github.com/imomzoda-dev/VoiceFlowAI/releases).
 
+## 1.0.3 — 2026-11-04
+
+**VoiceFlow AI 1.0.3** — Tajik and Persian recognised properly, every language in its own alphabet.
+
+- **Tajik model.** Whisper's general models know very little Tajik: they wrote Tajik speech in Latin letters (“Nomi man …”) or Persian script. VoiceFlow now offers a **Tajik language model** (190 MB, one click in *Settings → Recognition*), used automatically when you dictate in Tajik. On Google FLEURS Tajik recordings: **5% word errors and 100% Cyrillic** — the general Large v3 Turbo model made more errors than there were words (102%) and wrote only 28% in Cyrillic.
+- **Persian model.** A new **Persian language model** (574 MB), trained on conversational speech too, with punctuation: **6% word errors** instead of 20–29% with the general model. Phrases no longer repeat themselves (beam search on the GPU, and as a fallback on the CPU).
+- **Every language in its own alphabet.** VoiceFlow knows the alphabet of all ~100 languages. When recognition comes out in the wrong one (Tajik in Latin letters, Urdu in Hindi script…), the phrase is recognised again with a short sentence in the right alphabet as a guide. Latin look-alike letters inside Cyrillic words are fixed; Persian gets «ی», «ک» and «می‌».
+- **Right-to-left text.** Persian, Arabic, Urdu and Hebrew read right-to-left in documents, history and the dictation widget, next to left-to-right text.
+- **Fixed: long phrases were cut in the middle of a word.** When you speak for more than 9.5 s without a pause, the phrase is now cut in the gap between two words.
+- **Tajik punctuation:** the Tajik model writes no punctuation, so VoiceFlow starts the dictation with a capital letter and ends it with a full stop. Turn on *AI Writing → Correct* to have commas added too.
+
+**Updating:** VoiceFlow AI shows an **Update** button in the sidebar, or run `VoiceFlow-AI-Setup-1.0.3.exe` — it shows **“Update 1.0.2 → 1.0.3”** and keeps all your data. Then open *Settings → Recognition* and download the model for your language.
+
+**Windows:** the installer is not code-signed — if SmartScreen warns, click *More info → Run anyway*.
+
 ## 1.0.2 — 2026-11-04
 
 **VoiceFlow AI 1.0.2** — recognition that always hears you, and is many times faster.

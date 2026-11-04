@@ -108,7 +108,7 @@ Headings, lists, tables, images, links, colours and highlights · dictation stra
 2. **Speech engine** — *Settings → Recognition*:
    - Windows: click **Download whisper.cpp**. With an NVIDIA graphics card also click **GPU acceleration** (≈ 685 MB): about 8× faster.
    - macOS: `brew install whisper-cpp` (detected automatically, uses the Metal GPU).
-3. **Model** — download **Large v3 Turbo (quantised)** (≈ 550 MB) for the best Tajik and Russian quality.
+3. **Model** — download **Large v3 Turbo (quantised)** (≈ 550 MB). If you dictate in **Tajik** or **Persian**, also download its **language model** (Tajik 190 MB, Persian 574 MB): it is used automatically for that language, with far fewer errors and always the right alphabet.
 4. Optional: add an AI provider in *Settings → AI Providers* for *Correct* and *Professional* modes.
 5. Hold your key in any app and speak.
 
