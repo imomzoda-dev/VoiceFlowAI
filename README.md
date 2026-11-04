@@ -52,6 +52,12 @@ Put the cursor anywhere — Word, Google Docs, Telegram, WhatsApp, Chrome, Safar
   <img src="docs/screenshots/island.png" width="49%" alt="Dictation widget" />
 </p>
 
+## Choose the language with one key
+
+Press **F12** (Right Option ⌥ on a Mac): the widget shows **your three languages**. Pick one with **← →** (or **1 2 3**) — after **2 seconds** (2–8 s, your choice) VoiceFlow AI starts listening in that language, or press the key again to start at once. Speech is recognised only in the languages you chose, so Russian never comes out as “Icelandic”.
+
+**Types while you speak.** Like Google Docs voice typing, every phrase appears at the cursor as soon as you pause — while you keep talking. And the whole text also stays on the clipboard: if no text field had focus, just press **Ctrl+V / ⌘V**.
+
 ## Made for Tajik — and every other language
 
 - **Automatic language detection**, or one language, or *“detect among Tajik, Russian, English”*. Whisper often labels Tajik as Russian or Persian; VoiceFlow AI checks the text for ғ қ ӯ ҳ ҷ ӣ and re-runs recognition in the right language.

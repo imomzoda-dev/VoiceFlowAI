@@ -2,6 +2,21 @@
 
 All versions of VoiceFlow AI. Installers: [Releases](https://github.com/imomzoda-dev/VoiceFlowAI/releases).
 
+## 1.0.1 — 2026-11-04
+
+**VoiceFlow AI 1.0.1** — choose your language with one key, and text that appears while you speak. For **Windows** and **macOS**.
+
+- **Pick the language when you start.** Press **F12** (⌥ on a Mac): the dictation widget shows your three languages. Choose with **← →** (or **1 2 3**, or a click) — after **2 seconds** dictation starts in that language, or press F12 again to start at once. The time to choose can be 2, 4, 6 or 8 seconds (*Settings → Voice*).
+- **No more wrong languages.** In *Settings → Recognition → Your languages* choose your default language and two more — speech is recognised in these only. Russian can no longer come out as “Icelandic”. **All ~100 languages** Whisper knows can be chosen.
+- **Types while you speak, like Google Docs.** Every phrase appears at the cursor as soon as you pause, while you keep talking. Can be turned off in *Settings → Voice*.
+- **Nothing is lost.** The dictated text is also left on the clipboard: if no text field had focus, just press **Ctrl+V / ⌘V**. The widget says *Copied*.
+- **Much faster local recognition.** whisper.cpp now keeps the model loaded (it starts while you choose the language), so phrases are recognised without reloading it each time.
+- **Installer that updates.** Running the installer over an installed VoiceFlow AI shows **“Update 1.0.0 → 1.0.1”** with an **Update** button; your folder, documents, models, keys and settings are kept.
+
+**Updating:** VoiceFlow AI **1.0.0** shows an **Update** button in the sidebar. The earlier test build **0.1.0** has no built-in updater — download `VoiceFlow-AI-Setup-1.0.1.exe` once; it updates in place.
+
+**Windows:** the installer is not code-signed — if SmartScreen warns, click *More info → Run anyway*.
+
 ## 1.0.0 — 2026-11-04
 
 **VoiceFlow AI 1.0.0** — the first release. Voice typing in any app and an AI document workspace, for **Windows** and **macOS**.
