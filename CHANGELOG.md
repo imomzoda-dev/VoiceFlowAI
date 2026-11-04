@@ -2,6 +2,20 @@
 
 All versions of VoiceFlow AI. Installers: [Releases](https://github.com/imomzoda-dev/VoiceFlowAI/releases).
 
+## 1.0.2 — 2026-11-04
+
+**VoiceFlow AI 1.0.2** — recognition that always hears you, and is many times faster.
+
+- **Fixed: “Speech not detected” while you were speaking clearly.** With large models on the CPU, a long phrase could take 20–30 s to recognise. A 15-second safety timer then ran out and showed “Speech not detected” even though your speech had been recorded. The timer now only reacts if the microphone really delivered nothing.
+- **~4× faster on the processor.** The engine now uses a 10-second window, and long speech is split into phrases of up to 9.5 s at the quietest moment, so words are never cut. Large v3 Turbo on an i9-9900K: an 8.7 s phrase now takes **≈ 6 s instead of 20–30 s**, with the same text.
+- **NVIDIA GPU acceleration.** If you have an NVIDIA graphics card, *Settings → Recognition* offers **GPU acceleration** (one click, ≈ 685 MB). GTX 1050 Ti: the same phrase in **0.8 s** with Large v3 Turbo. If the GPU can't be used, VoiceFlow switches back to the CPU automatically. Settings also show which engine is running and how fast your last phrase was.
+- **The microphone always comes first.** Recognition runs at lower priority, so it can never interrupt recording, even while the next phrase is recognised during live typing.
+- **With live typing off,** the whole text is inserted once at the end.
+
+**Updating:** VoiceFlow AI **1.0.0 / 1.0.1** shows an **Update** button in the sidebar, or run `VoiceFlow-AI-Setup-1.0.2.exe` — it shows **“Update 1.0.1 → 1.0.2”** and keeps all your data.
+
+**Windows:** the installer is not code-signed — if SmartScreen warns, click *More info → Run anyway*.
+
 ## 1.0.1 — 2026-11-04
 
 **VoiceFlow AI 1.0.1** — choose your language with one key, and text that appears while you speak. For **Windows** and **macOS**.

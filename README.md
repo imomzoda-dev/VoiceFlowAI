@@ -106,7 +106,7 @@ Headings, lists, tables, images, links, colours and highlights · dictation stra
 
 1. **Install** the app and open it — a short setup guides you through language, microphone, key and recognition.
 2. **Speech engine** — *Settings → Recognition*:
-   - Windows: click **Download whisper.cpp**.
+   - Windows: click **Download whisper.cpp**. With an NVIDIA graphics card also click **GPU acceleration** (≈ 685 MB): about 8× faster.
    - macOS: `brew install whisper-cpp` (detected automatically, uses the Metal GPU).
 3. **Model** — download **Large v3 Turbo (quantised)** (≈ 550 MB) for the best Tajik and Russian quality.
 4. Optional: add an AI provider in *Settings → AI Providers* for *Correct* and *Professional* modes.
