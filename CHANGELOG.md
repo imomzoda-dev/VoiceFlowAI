@@ -2,6 +2,12 @@
 
 All versions of VoiceFlow AI. Installers: [Releases](https://github.com/imomzoda-dev/VoiceFlowAI/releases).
 
+## 1.0.4 — 2026-11-05
+
+**VoiceFlow AI 1.0.4** — reliable model downloads.
+
+- **Downloads continue after a dropped connection.** If the connection drops or stalls while a model downloads, it continues from where it stopped instead of failing. The file is still checked with SHA-256 from start to finish before it is used.
+
 ## 1.0.3 — 2026-11-04
 
 **VoiceFlow AI 1.0.3** — Tajik and Persian recognised properly, every language in its own alphabet.
