@@ -2,6 +2,15 @@
 
 All versions of VoiceFlow AI. Installers: [Releases](https://github.com/imomzoda-dev/VoiceFlowAI/releases).
 
+## 1.0.6 — 2026-11-05
+
+**VoiceFlow AI 1.0.6** — a proper Mac app.
+
+- **Liquid Glass on macOS:** the window is clear glass, as in macOS 26 — *Liquid Glass*, *Classic* or *Solid* in *Settings → Appearance → Window*.
+- **Fixed: a dark sidebar in light mode on a Mac** — the sidebar now follows the theme chosen in VoiceFlow, not the Mac's own appearance.
+- **Fixed: ← → did not change the language on a Mac** while Right Option ⌥ was still held; Option+arrow no longer moves the cursor in the app you type in.
+- Shortcut labels use Mac symbols (**Right ⌥**).
+
 ## 1.0.5 — 2026-11-05
 
 **VoiceFlow AI 1.0.5** — dictation that keeps working. For **Windows** and **macOS**.
