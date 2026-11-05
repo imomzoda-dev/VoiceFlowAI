@@ -2,6 +2,13 @@
 
 All versions of VoiceFlow AI. Installers: [Releases](https://github.com/imomzoda-dev/VoiceFlowAI/releases).
 
+## 1.0.5 — 2026-11-05
+
+**VoiceFlow AI 1.0.5** — dictation that keeps working. For **Windows** and **macOS**.
+
+- **Fixed: after a few dictations, every one failed with “Something went wrong”.** Disk cleaners deleted VoiceFlow's working folder in the system temporary folder while the app ran. Working files now live in VoiceFlow's own folder, which is recreated before every phrase.
+- **Safer model downloads:** the SHA-256 check now reads the finished file on disk, and a resumed download continues from the file's real size.
+
 ## 1.0.4 — 2026-11-05
 
 **VoiceFlow AI 1.0.4** — reliable model downloads.
