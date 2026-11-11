@@ -2,6 +2,14 @@
 
 All versions of VoiceFlow AI. Installers: [Releases](https://github.com/imomzoda-dev/VoiceFlowAI/releases).
 
+## 1.0.7 — 2026-11-11
+
+**VoiceFlow AI 1.0.7** — a new Tajik speech model that keeps itself up to date. For **Windows** and **macOS**.
+
+- **New Tajik model v2** ([whisper-tajik](https://github.com/imomzoda-dev/whisper-tajik)): trained on 162 h of Tajik speech, writes capitals and punctuation; word errors on FLEURS 22.3% → 15.0%, on live speech 61.9% → 37.9%.
+- **Automatic model updates:** a new release of the Tajik model is downloaded in the background, verified (size + SHA-256) and switched in between dictations. The old v1 model is replaced automatically. *Settings → Recognition → Update language models automatically*.
+- The model list shows the language model's version and update progress.
+
 ## 1.0.6 — 2026-11-05
 
 **VoiceFlow AI 1.0.6** — a proper Mac app.
