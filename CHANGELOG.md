@@ -2,6 +2,14 @@
 
 All versions of VoiceFlow AI. Installers: [Releases](https://github.com/imomzoda-dev/VoiceFlowAI/releases).
 
+## 1.0.8 — 2026-11-14
+
+**VoiceFlow AI 1.0.8** — a better Tajik model, and no more made-up text from silence or noise. For **Windows** and **macOS**.
+
+- **New Tajik model v3.1** ([whisper-large-tajik](https://github.com/imomzoda-dev/whisper-large-tajik)): FLEURS word errors 15.5% → 14.4%, live speech 38.6% → 36.7%; capitals, punctuation and Tajik letters. Installed models are replaced automatically, and later releases (also a larger Large v3 Turbo model) arrive by themselves.
+- **Silence and noise give no text:** voice activity detection (Silero VAD) — only the parts of a recording with speech are recognised; also faster. *Settings → Recognition → Ignore silence and noise*.
+- Whisper's “Субтитры сделал …” lines are no longer typed; the model list shows version and model size.
+
 ## 1.0.7 — 2026-11-11
 
 **VoiceFlow AI 1.0.7** — a new Tajik speech model that keeps itself up to date. For **Windows** and **macOS**.

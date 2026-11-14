@@ -1,0 +1,89 @@
+# Builds VoiceFlow AI from imomzoda-dev/voiceflow-ai-src at a tag (macOS arm64 + x64, Windows x64)
+# and attaches the installers and update feeds to this repository's release of that tag.
+# Everything happens on GitHub's machines: the installers never pass through a PC.
+#
+# Actions → "Publish release" → Run workflow → tag (e.g. v1.0.8).
+# Release notes: docs/release-notes/<tag>.md when it exists (used only when the release is created here).
+name: Publish release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Version tag in voiceflow-ai-src (e.g. v1.0.8)
+        required: true
+      platforms:
+        description: Which installers to attach
+        type: choice
+        default: macOS and Windows
+        options: [macOS and Windows, macOS, Windows]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-${{ inputs.tag }}
+
+jobs:
+  build:
+    uses: imomzoda-dev/voiceflow-ai-src/.github/workflows/release.yml@main
+    with:
+      ref: ${{ inputs.tag }}
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v5
+        with:
+          pattern: voiceflow-*
+          path: dist
+          merge-multiple: true
+
+      - name: Choose files
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          case "${{ inputs.platforms }}" in
+            *macOS*) cp dist/*.dmg dist/*-mac.zip dist/*-mac.zip.blockmap dist/latest-mac.yml out/ ;;
+          esac
+          case "${{ inputs.platforms }}" in
+            *Windows*) cp dist/*.exe dist/*.exe.blockmap dist/latest.yml out/ ;;
+          esac
+          ls -la out
+
+      # The apps update themselves from these feeds: every file must match its SHA-512 and size.
+      - name: Check the update feeds
+        run: |
+          set -euo pipefail
+          VERSION="${TAG#v}"
+          for yml in out/latest*.yml; do
+            echo "== $yml"; cat "$yml"
+            test "$(sed -n 's/^version: //p' "$yml")" = "$VERSION" || { echo "::error::$yml is not version $VERSION"; exit 1; }
+            awk '/^  - url: /{u=$3} /^    sha512: /{s=$2} /^    size: /{print u, s, $2}' "$yml" | while read -r url sha size; do
+              f="out/$url"
+              test -f "$f" || { echo "::error::$url is missing"; exit 1; }
+              got="$(sha512sum "$f" | cut -d' ' -f1 | xxd -r -p | base64 -w0)"
+              test "$got" = "$sha" || { echo "::error::SHA-512 mismatch: $url"; exit 1; }
+              test "$(stat -c %s "$f")" = "$size" || { echo "::error::size mismatch: $url"; exit 1; }
+              echo "OK $url"
+            done
+          done
+
+      - name: Attach to the release
+        run: |
+          set -euo pipefail
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            notes="docs/release-notes/$TAG.md"
+            [ -f "$notes" ] || { echo "VoiceFlow AI ${TAG#v}" > /tmp/notes.md; notes=/tmp/notes.md; }
+            gh release create "$TAG" --title "VoiceFlow AI ${TAG#v}" --notes-file "$notes"
+          fi
+          # Installers first, update feeds last: an app never sees a feed whose files are missing.
+          gh release upload "$TAG" --clobber $(ls out/* | grep -v '\.yml$')
+          gh release upload "$TAG" --clobber out/*.yml
+          gh release view "$TAG" --json assets --jq '.assets[] | .name + "  " + (.size|tostring)'
